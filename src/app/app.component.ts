@@ -9,15 +9,15 @@ import { LoginService } from './pages/login/login.service';
 export class AppComponent implements OnInit{
   title = 'tcc-front';
 
-  //desabilitado para construção
-  mostrarMenu: boolean = true;
+  //habilitar quando for codar front
+  mostrarMenu: boolean = false;
 
   constructor(
     private loginService: LoginService
   ) {}
 
   ngOnInit() {
-    // this.loginService.mostrarMenu$.subscribe(res => this.mostrarMenu = res);
+    this.loginService.mostrarMenu$.subscribe(res => this.mostrarMenu = res);
   }
 }
 

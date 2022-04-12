@@ -9,19 +9,25 @@ import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { LoginComponent } from './pages/login/login.component';
 import { LoginService } from './pages/login/login.service';
 import { HomeComponent } from './pages/home/home.component';
+import { ProdutosComponent } from './pages/produtos/produtos.component';
+import { ComprasComponent } from './pages/compras/compras.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
+    ComprasComponent,
+    HomeComponent,
     LoginComponent,
-    HomeComponent
+    NavbarComponent,
+    ProdutosComponent,
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
+    BrowserModule,
     FontAwesomeModule,
-    FormsModule
+    FormsModule,
+    Ng2SearchPipeModule
   ],
   providers: [LoginService],
   bootstrap: [AppComponent]

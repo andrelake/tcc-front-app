@@ -1,4 +1,18 @@
-<nav class="navbar navbar-light bg-light">
-  <fa-icon [icon]="faCubeIcon"></fa-icon>
-  <span>TESTE</span>
+<nav class="navbar navbar-light bg-light d-flex justify-content-between">
+  <a routerLink="/home">
+    <fa-icon [icon]="faCubeIcon"></fa-icon>
+  </a>
+
+  <div class="">
+    <ul class="list-group list-group-horizontal-sm">
+      <a href="#" class="list-group-item list-group-item-action">
+        <li class="list-group-item">Produtos</li>
+      </a>
+      <a href="#" class="list-group-item list-group-item-action">
+        <li class="list-group-item">Compras</li>
+      </a>
+    </ul>
+  </div>
+
+  <span class="">Controle de Estoque</span>
 </nav>

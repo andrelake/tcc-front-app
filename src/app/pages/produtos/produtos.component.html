@@ -1,4 +1,4 @@
-<h1>Produtos</h1>
+<h1 class="mt-3">Produtos</h1>
 
 <div>
   <input class="form-control mb-3" type="text" name="barra-de-pesquisa" [(ngModel)]="filtro" placeholder="pesquise o produto aqui...">
@@ -12,15 +12,23 @@
       <th scope="col">Categoria</th>
       <th scope="col">Quantidade</th>
       <th scope="col">Fornecedor</th>
+      <th scope="col">Ações</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let item of _listaDeProdutos | filter: filtro">
+    <tr *ngFor="let item of _listaDeProd | filter: filtro">
       <th scope="row">{{item.id}}</th>
       <td>{{item.nome}}</td>
       <td>{{item.categoria}}</td>
       <td>{{item.quantidade}}</td>
       <td>{{item.fornecedor}}</td>
+      <td>
+        <div>
+          <fa-icon [icon]="faTrashIcon" class="mr-4" role="button" (click)="deletarProd(item.id)"></fa-icon>
+          <fa-icon [icon]="faPencilIcon" class="mr-4" role="button" (click)="editarProd(item.id)"></fa-icon>
+          <fa-icon [icon]="faPlusIcon" role="button" (click)="solicitarCompraProdPorId(item.id)"></fa-icon>
+        </div>
+      </td>
     </tr>
   </tbody>
 </table>

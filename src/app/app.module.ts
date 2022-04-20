@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http'
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -27,6 +28,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     BrowserModule,
     FontAwesomeModule,
     FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule,
     Ng2SearchPipeModule
   ],
   providers: [LoginService],

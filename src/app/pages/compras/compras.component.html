@@ -1,29 +1,29 @@
 <h1 class="mt-3">Compras</h1>
 
-<div class="d-flex flex-column bg-light p-5">
+<form class="d-flex flex-column bg-light p-5" [formGroup]="_produtoForm">
   <div *ngIf="_solicitacaoDeCompraPorId">
     <label for="idProduto" class="mr-3">Id</label>
-    <input type="text" name="idProduto" class="w-100" [(ngModel)]="_produto">
+    <input type="text" name="idProduto" class="w-100" disabled="_solicitacaoDeCompraPorId">
   </div>
   <div>
     <label for="nomeProduto" class="mr-3 mt-5">Produto</label>
-    <input type="text" name="nomeProduto" class="w-100">
+    <input type="text" name="nomeProduto" class="w-100" formControlName="nome" name="nome">
   </div>
   <div>
     <label for="categoriaProduto" class="mr-3 mt-5">Categoria</label>
-    <input type="text" name="categoriaProduto" class="w-100">
+    <input type="text" name="categoriaProduto" class="w-100" formControlName="categoria" name="categoria">
   </div>
   <div>
     <label for="quantidadeProduto" class="mr-3 mt-5">Quantidade</label>
-    <input type="text" name="quantidadeProduto" class="w-100">
+    <input type="text" name="quantidadeProduto" class="w-100" formControlName="quantidade" name="quantidade">
   </div>
   <div>
     <label for="fornecedorProduto" class="mr-3 mt-5">Fornecedor</label>
-    <input type="text" name="fornecedorProduto" class="w-100" value="">
+    <input type="text" name="fornecedorProduto" class="w-100" formControlName="fornecedor" name="fornecedor">
   </div>
 
   <div class="mt-5">
-    <button class="btn btn-outline-success">Confirmar</button>
+    <button class="btn btn-outline-success" (click)="cadastrarSolicitacaoCompraProduto()">Confirmar</button>
     <button class="btn btn-danger ml-5" (click)="cancelar()">Cancelar</button>
   </div>
-</div>
+</form>

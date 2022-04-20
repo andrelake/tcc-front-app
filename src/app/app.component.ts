@@ -10,14 +10,14 @@ export class AppComponent implements OnInit{
   title = 'tcc-front';
 
   //habilitar quando for codar front
-  mostrarMenu: boolean = true;
+  mostrarMenu: boolean = false;
 
   constructor(
-    // private loginService: LoginService
+    private loginService: LoginService
   ) {}
 
   ngOnInit() {
-    // this.loginService.mostrarMenu$.subscribe(res => this.mostrarMenu = res);
+    this.loginService.mostrarMenu$.subscribe(res => this.mostrarMenu = res);
   }
 }
 

@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
+import { faPencil, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { Produto } from 'src/app/models/produto';
 
-import { faTrash, faPencil, faPlus } from '@fortawesome/free-solid-svg-icons'
-import { ProdutoService } from './produto.service';
 import { ComprasService } from '../compras/compras.service';
-import { Router } from '@angular/router';
+import { ProdutoService } from './produto.service';
 
 @Component({
   selector: 'app-produtos',
@@ -12,6 +14,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./produtos.component.css']
 })
 export class ProdutosComponent implements OnInit {
+
+  dataSource = new MatTableDataSource<Produto>([]);
+  displayedColumns: string[] = ['id', 'nome', 'categoria', 'quantidade', 'fornecedor'];
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   filtro: string = '';
   faTrashIcon = faTrash;
@@ -26,28 +32,12 @@ export class ProdutosComponent implements OnInit {
     private router: Router
   ) { }
 
-  ngOnInit(): void {
-    this._listaDeProd = this.produtoService._listaDeProdutos;
+  ngOnInit() {
+    this.getTodosOsProdutos();
   }
 
-  deletarProd(id: number) {
-    if(this._listaDeProd.length) {
-      for (let i = 0; i < this._listaDeProd.length; i++) {
-        let prod = this._listaDeProd[i];
-
-        if(prod.id == id)
-          this._listaDeProd.splice(i, 1);
-      }
-    }
-  }
-
-  editarProd(id: number) {
-
-  }
-
-  solicitarCompraProdPorId(id: number) {
-    this.comprasService.solicitarCompraProd$.emit(id);
-    this.comprasService.solicitacaoDeCompraPorId = true;
-    this.router.navigate(['/compras']);
+  getTodosOsProdutos() {
+    this.dataSource = new MatTableDataSource<Produto>(this.produtoService._listaDeProdutos);
+    this.dataSource.paginator = this.paginator;
   }
 }

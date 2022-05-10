@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ComprasService {
 
-  solicitarCompraProd$: EventEmitter<number> = new EventEmitter();
+  solicitarCompraProd$: EventEmitter<Object> = new EventEmitter();
   solicitacaoDeCompraPorId: boolean = false;
 
   apiURL: string = 'http://localhost:8080/api'

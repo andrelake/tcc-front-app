@@ -1,6 +1,7 @@
 import { Location } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit, Input } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Produto } from 'src/app/models/produto';
 
 import { ProdutoService } from '../produtos/produto.service';
 import { ComprasService } from './compras.service';
@@ -13,43 +14,39 @@ import { ComprasService } from './compras.service';
 export class ComprasComponent implements OnInit {
 
   _solicitacaoDeCompraPorId: boolean = false;
-  _produto = null;
+  _produto: any = null;
 
-  _produtoForm: FormGroup;
+  _produtoForm: any = this.formBuilder.group({
+    id: [''],
+    nome: [''],
+    categoria: [''],
+    quantidade: [''],
+    fornecedor: [''],
+  });
 
   constructor(
     private comprasService: ComprasService,
     private produtoService: ProdutoService,
     private location: Location,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
   ) { }
 
   ngOnInit(): void {
     this._solicitacaoDeCompraPorId = this.comprasService.solicitacaoDeCompraPorId;
 
-    this._produtoForm = this.formBuilder.group({
-      id: [''],
-      nome: ['', [Validators.required, Validators.minLength(2)]],
-      categoria: ['', [Validators.required, Validators.minLength(2)]],
-      quantidade:  ['', [Validators.required, Validators.minLength(1), Validators.pattern('^[0-9]*$')]],
-      fornecedor: ['', [Validators.required, Validators.minLength(2)]]
-    });
-
-    this.comprasService.solicitarCompraProd$.subscribe(idDoProdutoSolicitado => {
-      if(this._solicitacaoDeCompraPorId){
-        this._produto = this.produtoService._listaDeProdutos.find(produto => produto.id == idDoProdutoSolicitado);
+    if(this._solicitacaoDeCompraPorId) {
+      this._produto = new Produto();
+      this.comprasService.solicitarCompraProd$.subscribe(produto => {
+        this._produto = produto;
         this._produtoForm.patchValue({
-          id: this._produto.id,
-          nome: this._produto.nome,
-          categoria: this._produto.categoria,
-          quantidade:  this._produto.quantidade,
-          fornecedor: this._produto.fornecedor,
+          id: [this._produto.id],
+          nome: [this._produto.nome, [Validators.required, Validators.minLength(2)]],
+          categoria: [this._produto.categoria, [Validators.required, Validators.minLength(2)]],
+          quantidade:  [this._produto.quantidade, [Validators.required, Validators.minLength(1), Validators.pattern('^[0-9]*$')]],
+          fornecedor: [this._produto.fornecedor, [Validators.required, Validators.minLength(2)]]
         });
-
-        console.log('### produtosolicitadoporId');
-        console.log(this._produto);
-      }
-    })
+      })
+    }
   }
 
   cancelar() {
@@ -59,13 +56,13 @@ export class ComprasComponent implements OnInit {
     }
 
     this.location.back();
-    this._produtoForm.reset();
+    // this._produtoForm.reset();
   }
 
   cadastrarSolicitacaoCompraProduto() {
     alert('Compra cadastrada com sucesso');
-    console.log(this._produtoForm.value);
+    // console.log(this._produtoForm.value);
     // this.comprasService.post_SolicitarCompra(this._produtoForm.value).subscribe();
-    this._produtoForm.reset();
+    // this._produtoForm.reset();
   }
 }

@@ -40,4 +40,9 @@ export class ProdutosComponent implements OnInit {
     this.dataSource = new MatTableDataSource<Produto>(this.produtoService._listaDeProdutos);
     this.dataSource.paginator = this.paginator;
   }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 }

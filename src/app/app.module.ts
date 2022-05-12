@@ -23,6 +23,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { LoginService } from './pages/login/login.service';
 import { ProdutosComponent } from './pages/produtos/produtos.component';
+import { ModalComponent } from './components/shared/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { ProdutosComponent } from './pages/produtos/produtos.component';
     LoginComponent,
     NavbarComponent,
     ProdutosComponent,
+    ModalComponent,
   ],
   imports: [
     AppRoutingModule,

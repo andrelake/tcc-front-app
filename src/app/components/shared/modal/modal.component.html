@@ -1,0 +1,34 @@
+<h1 mat-dialog-title>Formulário de produtos</h1>
+
+<div mat-dialog-content>
+  <form [formGroup]="_produtoForm">
+    <mat-form-field appearance="outline">
+      <mat-label>Nome</mat-label>
+      <input formControlName="nome" matInput placeholder="Nome">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Categoria</mat-label>
+      <mat-select formControlName="categoria" placeholder="Categoria">
+        <div *ngFor="let categoria of _listaDeCategorias">
+          <mat-option value={{categoria.nome}}>{{categoria.nome}}</mat-option>
+        </div>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Quantidade</mat-label>
+      <input formControlName="quantidade" matInput placeholder="Quantidade">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Fornecedor</mat-label>
+      <input formControlName="fornecedor" matInput placeholder="Fornecedor">
+    </mat-form-field>
+  </form>
+</div>
+
+<div mat-dialog-actions [align]="'end'">
+  <button mat-raised-button color="warn" mat-dialog-close="">Fechar</button>
+  <button style="margin-left: 8px;" mat-raised-button color="primary" (click)="addProd()">{{ _acaoBtn }}</button>
+</div>

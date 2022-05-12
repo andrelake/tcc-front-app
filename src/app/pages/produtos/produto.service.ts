@@ -1,4 +1,5 @@
-import { EventEmitter, Injectable, Output } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { Categoria } from 'src/app/models/categoria';
 import { Produto } from 'src/app/models/produto';
 
 @Injectable({
@@ -30,5 +31,15 @@ export class ProdutoService {
     },
   ];
 
+  _listaDeCategorias: Categoria[] = [
+    {
+      id: 1,
+      nome: 'Material de escritório'
+    }]
+
   constructor() { }
+
+  salvarNovoProduto(produto: Produto) {
+    this._listaDeProdutos.push(produto);
+  }
 }

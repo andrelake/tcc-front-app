@@ -42,7 +42,7 @@ export class ModalComponent implements OnInit {
   }
 
   addProd() {
-    if(this.editData) {
+    if(!this.editData) {
       if(this._produtoForm.valid) {
         this.produtoService.salvarNovoProduto(this._produtoForm.value);
         alert('Produto adicionado com sucesso');
@@ -53,8 +53,17 @@ export class ModalComponent implements OnInit {
       }
     }
     else {
-      // this.updateProduct();
+      this.updateProduct(this.editData);
+      alert('Produto atualizado com sucesso');
     }
   }
 
+  updateProduct(editData: Produto) {
+    let indexDoProdutoSelecionado = this.produtoService._listaDeProdutos.findIndex(produto => produto.id == editData.id);
+    let produtoSelecionado = this.produtoService._listaDeProdutos[indexDoProdutoSelecionado];
+    produtoSelecionado.nome = this._produtoForm.controls['nome'].value;
+    produtoSelecionado.categoria = this._produtoForm.controls['categoria'].value;
+    produtoSelecionado.quantidade = this._produtoForm.controls['quantidade'].value;
+    produtoSelecionado.fornecedor = this._produtoForm.controls['fornecedor'].value;
+  }
 }

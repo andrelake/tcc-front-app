@@ -1,3 +1,4 @@
+import { element } from 'protractor';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
@@ -61,5 +62,10 @@ export class ProdutosComponent implements OnInit {
       width: '30%',
       data: element
     })
+  }
+
+  deleteProduct(element: Produto) {
+    this.produtoService.removerProduto(element.id);
+    this.ngOnInit();
   }
 }

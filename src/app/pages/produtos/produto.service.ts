@@ -42,4 +42,8 @@ export class ProdutoService {
   salvarNovoProduto(produto: Produto) {
     this._listaDeProdutos.push(produto);
   }
+
+  removerProduto(index: number) {
+    this._listaDeProdutos.splice(index, 1);
+  }
 }

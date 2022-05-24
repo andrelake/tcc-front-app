@@ -1,5 +1,5 @@
 import { element } from 'protractor';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
@@ -33,6 +33,7 @@ export class ProdutosComponent implements OnInit {
     private produtoService: ProdutoService,
     private comprasService: ComprasService,
     private dialog: MatDialog,
+    private changeDetectorRef: ChangeDetectorRef,
     private router: Router
   ) { }
 
@@ -41,7 +42,7 @@ export class ProdutosComponent implements OnInit {
   }
 
   getTodosOsProdutos() {
-    this.dataSource = new MatTableDataSource<Produto>(this.produtoService._listaDeProdutos);
+    this.dataSource = new MatTableDataSource<Produto>(this.produtoService.getTodosOsProdutos());
     this.dataSource.paginator = this.paginator;
   }
 
@@ -54,7 +55,7 @@ export class ProdutosComponent implements OnInit {
     this.dialog.open(ModalComponent, {
       width: '30%',
       height: '50%'
-    });
+    }).afterClosed().subscribe(res => this.atualizarTabela());
   }
 
   editProduct(element: Produto) {
@@ -65,7 +66,11 @@ export class ProdutosComponent implements OnInit {
   }
 
   deleteProduct(element: Produto) {
-    this.produtoService.removerProduto(element.id);
+    this.produtoService.removerProduto(element);
     this.ngOnInit();
+  }
+
+  atualizarTabela() {
+    this.dataSource.data = this.dataSource.data;
   }
 }

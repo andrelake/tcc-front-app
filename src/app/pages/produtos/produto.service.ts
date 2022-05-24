@@ -40,10 +40,16 @@ export class ProdutoService {
   constructor() { }
 
   salvarNovoProduto(produto: Produto) {
+    produto.id = this._listaDeProdutos.length + 1;
     this._listaDeProdutos.push(produto);
   }
 
-  removerProduto(index: number) {
-    this._listaDeProdutos.splice(index, 1);
+  removerProduto(element: Produto) {
+    let produtoSelecionado = this._listaDeProdutos.find(produto => produto.nome === element.nome);
+    this._listaDeProdutos.splice(this._listaDeProdutos.indexOf(produtoSelecionado), 1);
+  }
+
+  getTodosOsProdutos() {
+    return this._listaDeProdutos;
   }
 }

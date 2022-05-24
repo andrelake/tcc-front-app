@@ -1,7 +1,7 @@
 import { ProdutoService } from './../../../pages/produtos/produto.service';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Produto } from 'src/app/models/produto';
 import { Categoria } from 'src/app/models/categoria';
 
@@ -19,6 +19,7 @@ export class ModalComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private produtoService: ProdutoService,
+    private dialogRef: MatDialogRef<ModalComponent>,
     @Inject(MAT_DIALOG_DATA) public editData: Produto
   ) { }
 
@@ -47,6 +48,7 @@ export class ModalComponent implements OnInit {
         this.produtoService.salvarNovoProduto(this._produtoForm.value);
         alert('Produto adicionado com sucesso');
         this._produtoForm.reset();
+        this.dialogRef.close();
       }
       else {
         alert('Erro ao adicionar produto');

@@ -10,7 +10,7 @@ export class AppComponent implements OnInit{
   title = 'tcc-front';
 
   //habilitar quando for codar front
-  mostrarMenu: boolean = true;
+  mostrarMenu: boolean = false;
 
   constructor(
     private loginService: LoginService

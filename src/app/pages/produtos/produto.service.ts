@@ -45,7 +45,7 @@ export class ProdutoService {
   }
 
   removerProduto(element: Produto) {
-    let produtoSelecionado = this._listaDeProdutos.find(produto => produto.nome === element.nome);
+    let produtoSelecionado = this._listaDeProdutos.find(produto => produto.nome === element.nome && produto.fornecedor === element.fornecedor);
     this._listaDeProdutos.splice(this._listaDeProdutos.indexOf(produtoSelecionado), 1);
   }
 

@@ -36,4 +36,9 @@ export class ComprasService {
   public post_SolicitarCompra(produto) {
     // this.http.post(`${this.apiURL}/compras/solicitarCompra`, produto);
   }
+
+  public removerCompra(element: Compra) {
+    let compraSelecionada = this._listaDeCompras.find(compra => compra.nf === element.nf && compra.fornecedor === element.fornecedor);
+    this._listaDeCompras.splice(this._listaDeCompras.indexOf(compraSelecionada), 1);
+  }
 }

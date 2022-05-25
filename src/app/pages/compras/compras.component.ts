@@ -69,6 +69,11 @@ export class ComprasComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
   }
 
+  deletarCompra(element: Compra) {
+    this.comprasService.removerCompra(element);
+    this.ngOnInit();
+  }
+
   cancelar() {
     // this.comprasService.solicitacaoDeCompraPorId = false;
     // if(this._solicitacaoDeCompraPorId) {

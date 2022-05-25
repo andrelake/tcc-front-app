@@ -1,12 +1,12 @@
-import { element } from 'protractor';
 import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { faPencil, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
-import { ModalComponent } from 'src/app/components/shared/modal/modal.component';
+import { element } from 'protractor';
 import { Produto } from 'src/app/models/produto';
+import { ModalFormProdutosComponent } from 'src/app/pages/produtos/modal_form_produtos/modal_form_produtos.component';
 
 import { ComprasService } from '../compras/compras.service';
 import { ProdutoService } from './produto.service';
@@ -52,14 +52,14 @@ export class ProdutosComponent implements OnInit {
   }
 
   openDialog() {
-    this.dialog.open(ModalComponent, {
+    this.dialog.open(ModalFormProdutosComponent, {
       width: '30%',
       height: '50%'
     }).afterClosed().subscribe(res => this.atualizarTabela());
   }
 
   editProduct(element: Produto) {
-    this.dialog.open(ModalComponent, {
+    this.dialog.open(ModalFormProdutosComponent, {
       width: '30%',
       data: element
     })

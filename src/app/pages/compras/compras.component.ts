@@ -1,10 +1,11 @@
 import { Location } from '@angular/common';
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Compra } from 'src/app/models/compra';
-import { Produto } from 'src/app/models/produto';
+import { ModalFormProdutosComponent } from 'src/app/pages/produtos/modal_form_produtos/modal_form_produtos.component';
 
 import { ProdutoService } from '../produtos/produto.service';
 import { ComprasService } from './compras.service';
@@ -37,6 +38,7 @@ export class ComprasComponent implements OnInit {
     private comprasService: ComprasService,
     private produtoService: ProdutoService,
     private location: Location,
+    private dialog: MatDialog,
     private formBuilder: FormBuilder,
   ) { }
 
@@ -62,6 +64,13 @@ export class ComprasComponent implements OnInit {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  openDialog() {
+    this.dialog.open(ModalFormProdutosComponent, {
+      width: '30%',
+      height: '50%'
+    });
   }
 
   getTodasAsCompras() {

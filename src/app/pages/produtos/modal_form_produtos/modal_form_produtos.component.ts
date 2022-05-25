@@ -1,4 +1,4 @@
-import { ProdutoService } from './../../../pages/produtos/produto.service';
+import { ProdutoService } from '../produto.service';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -6,11 +6,11 @@ import { Produto } from 'src/app/models/produto';
 import { Categoria } from 'src/app/models/categoria';
 
 @Component({
-  selector: 'app-modal',
-  templateUrl: './modal.component.html',
-  styleUrls: ['./modal.component.css']
+  selector: 'app-modal-form-produtos',
+  templateUrl: './modal_form_produtos.component.html',
+  styleUrls: ['./modal_form_produtos.component.css']
 })
-export class ModalComponent implements OnInit {
+export class ModalFormProdutosComponent implements OnInit {
 
   _produtoForm !: FormGroup;
   _listaDeCategorias: Categoria[] = [];
@@ -19,7 +19,7 @@ export class ModalComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private produtoService: ProdutoService,
-    private dialogRef: MatDialogRef<ModalComponent>,
+    private dialogRef: MatDialogRef<ModalFormProdutosComponent>,
     @Inject(MAT_DIALOG_DATA) public editData: Produto
   ) { }
 

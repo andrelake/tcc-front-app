@@ -23,7 +23,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { LoginService } from './pages/login/login.service';
 import { ProdutosComponent } from './pages/produtos/produtos.component';
-import { ModalComponent } from './components/shared/modal/modal.component';
+import { ModalFormProdutosComponent } from './pages/produtos/modal_form_produtos/modal_form_produtos.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +33,7 @@ import { ModalComponent } from './components/shared/modal/modal.component';
     LoginComponent,
     NavbarComponent,
     ProdutosComponent,
-    ModalComponent,
+    ModalFormProdutosComponent,
   ],
   imports: [
     AppRoutingModule,

@@ -15,7 +15,7 @@ export class LoginService {
   ];
 
   public usuarioAutenticado: boolean = false;
-  public mostrarMenu$ = new EventEmitter<boolean>();
+  public usuarioLogado$ = new EventEmitter<boolean>();
 
   constructor(
     private router: Router
@@ -29,7 +29,7 @@ export class LoginService {
     this._listaDeUsuarios.forEach((el) => {
       if(el.nome == usuario.nome && el.senha == usuario.senha) {
         this.usuarioAutenticado = true;
-        this.mostrarMenu$.emit(true);
+        this.usuarioLogado$.emit(true);
       }
     });
 
@@ -39,7 +39,7 @@ export class LoginService {
     }
     else {
       console.log('Erro ao autenticar usuário.')
-      this.mostrarMenu$.emit(false);
+      this.usuarioLogado$.emit(false);
     }
   }
 }

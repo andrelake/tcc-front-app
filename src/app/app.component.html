@@ -1,7 +1,42 @@
-<nav *ngIf="mostrarMenu">
-    <app-navbar></app-navbar>
-</nav>
+<mat-toolbar *ngIf="usuarioLogado">
+  <div class="toolbar">
+    <button type="button" mat-button (click)="sidenav.toggle()">
+      <mat-icon>view_list</mat-icon>
+    </button>
+  </div>
+  <span>Controle de Estoque</span>
+</mat-toolbar>
 
-<div class="container">
-  <router-outlet></router-outlet>
-</div>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="push">
+    <div class="divisoria">
+      <span>Principal</span>
+    </div>
+    <div>
+      <button type="button" mat-button routerLink="/home">
+        <mat-icon>home</mat-icon>
+        Home
+      </button>
+    </div>
+    <div>
+      <button type="button" mat-button routerLink="/produtos">
+        <mat-icon>devices</mat-icon>
+        Produtos
+      </button>
+    </div>
+    <div>
+      <button type="button" mat-button routerLink="/compras">
+        <mat-icon>shopping_cart</mat-icon>
+        Compras
+      </button>
+    </div>
+    <div class="divisoria">
+      <span>Cadastros</span>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="container">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

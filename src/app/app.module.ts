@@ -1,8 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -10,21 +8,23 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSelectModule } from '@angular/material/select';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import {MatTableModule} from '@angular/material/table';
-import {MatPaginatorModule} from '@angular/material/paginator';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { ComprasComponent } from './pages/compras/compras.component';
+import { ModalInfoCompraComponent } from './pages/compras/modal-info-compra/modal-info-compra.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { LoginService } from './pages/login/login.service';
-import { ProdutosComponent } from './pages/produtos/produtos.component';
 import { ModalFormProdutosComponent } from './pages/produtos/modal_form_produtos/modal_form_produtos.component';
-import { ModalInfoCompraComponent } from './pages/compras/modal-info-compra/modal-info-compra.component';
+import { ProdutosComponent } from './pages/produtos/produtos.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +32,6 @@ import { ModalInfoCompraComponent } from './pages/compras/modal-info-compra/moda
     ComprasComponent,
     HomeComponent,
     LoginComponent,
-    NavbarComponent,
     ProdutosComponent,
     ModalFormProdutosComponent,
     ModalInfoCompraComponent,
@@ -52,6 +51,7 @@ import { ModalInfoCompraComponent } from './pages/compras/modal-info-compra/moda
     MatNativeDateModule,
     MatPaginatorModule,
     MatSelectModule,
+    MatSidenavModule,
     MatTableModule,
     MatToolbarModule,
     ReactiveFormsModule

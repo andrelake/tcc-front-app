@@ -1,0 +1,19 @@
+mat-toolbar {
+  background: lightgray;
+}
+
+mat-sidenav-container {
+  height: 100%;
+
+  border: 1px black solid;
+}
+
+.divisoria {
+  background-color: gray;
+  color: white;
+
+  text-align: center;
+
+  margin: 5px;
+  border-radius: 5px;
+}

@@ -1,6 +1,6 @@
 import { Location } from '@angular/common';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
@@ -9,6 +9,7 @@ import { ModalFormProdutosComponent } from 'src/app/pages/produtos/modal_form_pr
 
 import { ProdutoService } from '../produtos/produto.service';
 import { ComprasService } from './compras.service';
+import { ModalInfoCompraComponent } from './modal-info-compra/modal-info-compra.component';
 
 @Component({
   selector: 'app-compras',
@@ -67,7 +68,7 @@ export class ComprasComponent implements OnInit {
   }
 
   openDialog() {
-    this.dialog.open(ModalFormProdutosComponent, {
+    this.dialog.open(ModalInfoCompraComponent, {
       width: '30%',
       height: '50%'
     });
@@ -81,6 +82,13 @@ export class ComprasComponent implements OnInit {
   deletarCompra(element: Compra) {
     this.comprasService.removerCompra(element);
     this.ngOnInit();
+  }
+
+  detalhesCompra(element: Compra) {
+    this.dialog.open(ModalInfoCompraComponent, {
+      width: '30%',
+      data: element
+    })
   }
 
   cancelar() {
@@ -98,5 +106,9 @@ export class ComprasComponent implements OnInit {
     // console.log(this._produtoForm.value);
     // this.comprasService.post_SolicitarCompra(this._produtoForm.value).subscribe();
     // this._produtoForm.reset();
+  }
+
+  atualizarTabela() {
+    this.dataSource.data = this.dataSource.data;
   }
 }

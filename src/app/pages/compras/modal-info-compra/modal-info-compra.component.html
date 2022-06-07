@@ -1,1 +1,39 @@
-<p>modal-info-compra works!</p>
+<h1 mat-dialog-title>Formulário de produtos</h1>
+
+<div mat-dialog-content>
+  <form [formGroup]="_compraForm">
+    <mat-form-field appearance="outline">
+      <mat-label>Código</mat-label>
+      <input formControlName="id" matInput placeholder="Código" disabled>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>NF</mat-label>
+      <input formControlName="nf" matInput placeholder="NF">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Fornecedor</mat-label>
+      <input formControlName="fornecedor" matInput placeholder="Fornecedor">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Categoria</mat-label>
+      <mat-select formControlName="categoria" placeholder="Categoria">
+        <div *ngFor="let categoria of _listaDeCategorias">
+          <mat-option value={{categoria.nome}}>{{categoria.nome}}</mat-option>
+        </div>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Valor</mat-label>
+      <input type="number" formControlName="valor" matInput placeholder="Valor">
+    </mat-form-field>
+  </form>
+</div>
+
+<div mat-dialog-actions [align]="'end'">
+  <button mat-raised-button color="warn" mat-dialog-close="">Fechar</button>
+  <button style="margin-left: 8px;" mat-raised-button color="primary">Salvar</button>
+</div>

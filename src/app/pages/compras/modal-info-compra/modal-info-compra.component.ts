@@ -37,8 +37,8 @@ export class ModalInfoCompraComponent implements OnInit {
       // this._acaoBtn = 'Update';
       this._compraForm.controls['id'].setValue(this.editData.id);
       this._compraForm.controls['nf'].setValue(this.editData.nf);
-      this._compraForm.controls['fornecedor'].setValue(this.editData.fornecedor);
-      this._compraForm.controls['categoria'].setValue(this.editData.categoria);
+      this._compraForm.controls['fornecedor'].setValue(this.editData.fornecedor.nome);
+      this._compraForm.controls['categoria'].setValue(this.editData.categoria.nome);
       this._compraForm.controls['valor'].setValue(this.editData.valor);
     }
   }

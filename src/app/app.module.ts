@@ -25,6 +25,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { LoginService } from './pages/login/login.service';
 import { ModalFormProdutosComponent } from './pages/produtos/modal_form_produtos/modal_form_produtos.component';
 import { ProdutosComponent } from './pages/produtos/produtos.component';
+import { FornecedoresComponent } from './pages/fornecedores/fornecedores.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { ProdutosComponent } from './pages/produtos/produtos.component';
     ProdutosComponent,
     ModalFormProdutosComponent,
     ModalInfoCompraComponent,
+    FornecedoresComponent,
   ],
   imports: [
     AppRoutingModule,

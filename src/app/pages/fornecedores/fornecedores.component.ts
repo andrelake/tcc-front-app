@@ -3,6 +3,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { FornecedoresService } from './fornecedores.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalInfoFornecedorComponent } from './modal-info-fornecedor/modal-info-fornecedor.component';
 
 @Component({
   selector: 'app-fornecedores',
@@ -12,13 +14,14 @@ import { FornecedoresService } from './fornecedores.service';
 export class FornecedoresComponent implements OnInit {
 
   dataSource = new MatTableDataSource<Fornecedor>([]);
-  displayedColumns: string[] = ['id', 'nome', 'categoria', 'endereco', 'action'];
+  displayedColumns: string[] = ['id', 'nome', 'categoria', 'action'];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   _listaDeFornecedores: Fornecedor[] = [];
 
   constructor(
-    private _fornecedorService: FornecedoresService
+    private _fornecedorService: FornecedoresService,
+    private dialog: MatDialog,
   ) { }
 
   ngOnInit(): void {
@@ -36,7 +39,10 @@ export class FornecedoresComponent implements OnInit {
   }
 
   detalhesFornecedor(element: Fornecedor) {
-
+    this.dialog.open(ModalInfoFornecedorComponent, {
+      width: '40%',
+      data: element
+    })
   }
 
   deletarFornecedor(element: Fornecedor) {

@@ -26,11 +26,11 @@ export class ModalInfoCompraComponent implements OnInit {
     this._listaDeCategorias = this.produtoService._listaDeCategorias;
 
     this._compraForm = this.formBuilder.group({
-      id: ['', Validators.required],
-      nf: ['', Validators.required],
-      fornecedor: ['', Validators.required],
-      categoria: ['', Validators.required],
-      valor: ['', [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
+      id: [{value: '', disabled: true}, Validators.required],
+      nf: [{value: '', disabled: true}, Validators.required],
+      fornecedor: [{value: '', disabled: true}, Validators.required],
+      categoria: [{value: '', disabled: true}, Validators.required],
+      valor: [{value: '', disabled: true}, [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
     })
 
     if(this.editData) {

@@ -26,6 +26,7 @@ import { LoginService } from './pages/login/login.service';
 import { ModalFormProdutosComponent } from './pages/produtos/modal_form_produtos/modal_form_produtos.component';
 import { ProdutosComponent } from './pages/produtos/produtos.component';
 import { FornecedoresComponent } from './pages/fornecedores/fornecedores.component';
+import { ModalInfoFornecedorComponent } from './pages/fornecedores/modal-info-fornecedor/modal-info-fornecedor.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { FornecedoresComponent } from './pages/fornecedores/fornecedores.compone
     ModalFormProdutosComponent,
     ModalInfoCompraComponent,
     FornecedoresComponent,
+    ModalInfoFornecedorComponent,
   ],
   imports: [
     AppRoutingModule,

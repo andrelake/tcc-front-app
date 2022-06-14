@@ -1,0 +1,46 @@
+<h1 mat-dialog-title>Formulário de fornecedor</h1>
+
+<div mat-dialog-content>
+  <form [formGroup]="fornecedorForm">
+    <mat-form-field appearance="outline">
+      <mat-label>Código</mat-label>
+      <input formControlName="id" matInput placeholder="Código" disabled>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Nome</mat-label>
+      <input formControlName="nome" matInput placeholder="Nome">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Categoria</mat-label>
+      <mat-select formControlName="categoria" placeholder="Categoria">
+        <div *ngFor="let categoria of listaDeCategorias">
+          <mat-option value={{categoria.nome}}>{{categoria.nome}}</mat-option>
+        </div>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Logradouro</mat-label>
+      <input type="text" formControlName="logradouro" matInput placeholder="Logradouro">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Número</mat-label>
+      <input type="number" formControlName="numero" matInput placeholder="Número">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Cidade</mat-label>
+      <input type="text" formControlName="cidade" matInput placeholder="Cidade">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Sigla</mat-label>
+      <input type="text" formControlName="sigla" matInput placeholder="Sigla">
+    </mat-form-field>
+  </form>
+</div>
+
+<div mat-dialog-actions [align]="'end'">
+  <button mat-raised-button color="warn" mat-dialog-close="">Fechar</button>
+  <!-- <button style="margin-left: 8px;" mat-raised-button color="primary">Salvar</button> -->
+</div>

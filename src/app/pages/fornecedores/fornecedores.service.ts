@@ -54,4 +54,10 @@ export class FornecedoresService {
   ];
 
   constructor() { }
+
+
+  public removerFornecedor(element: Fornecedor) {
+    let fornecedorSelecionado = this._listaDeFornecedores.find(fornecedor => fornecedor.id === element.id && fornecedor.nome === element.nome);
+    this._listaDeFornecedores.splice(this._listaDeFornecedores.indexOf(fornecedorSelecionado), 1);
+  }
 }

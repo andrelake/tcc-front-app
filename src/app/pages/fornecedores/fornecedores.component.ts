@@ -40,7 +40,8 @@ export class FornecedoresComponent implements OnInit {
   }
 
   deletarFornecedor(element: Fornecedor) {
-
+    this._fornecedorService.removerFornecedor(element);
+    this.atualizarTabela();
   }
 
   atualizarTabela() {

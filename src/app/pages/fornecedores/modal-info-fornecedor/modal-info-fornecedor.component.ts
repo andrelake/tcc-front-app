@@ -28,10 +28,6 @@ export class ModalInfoFornecedorComponent implements OnInit {
       id: [{value: '', disabled: true}, Validators.required],
       nome: [{value: '', disabled: true}, Validators.required],
       categoria: [{value: '', disabled: true}, Validators.required],
-      logradouro: [{value: '', disabled: true}, Validators.required],
-      numero: [{value: '', disabled: true}, [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
-      cidade: [{value: '', disabled: true}, Validators.required],
-      sigla: [{value: '', disabled: true}, Validators.required],
     })
 
     if(this.editData) {
@@ -39,10 +35,6 @@ export class ModalInfoFornecedorComponent implements OnInit {
       this.fornecedorForm.controls['id'].setValue(this.editData.id);
       this.fornecedorForm.controls['nome'].setValue(this.editData.nome);
       this.fornecedorForm.controls['categoria'].setValue(this.editData.categoria.nome);
-      this.fornecedorForm.controls['logradouro'].setValue(this.editData.endereco.logradouro);
-      this.fornecedorForm.controls['numero'].setValue(this.editData.endereco.numero);
-      this.fornecedorForm.controls['cidade'].setValue(this.editData.endereco.cidade.nome);
-      this.fornecedorForm.controls['sigla'].setValue(this.editData.endereco.cidade.estado.sigla);
     }
   }
 

@@ -27,6 +27,7 @@ import { ModalFormProdutosComponent } from './pages/produtos/modal_form_produtos
 import { ProdutosComponent } from './pages/produtos/produtos.component';
 import { FornecedoresComponent } from './pages/fornecedores/fornecedores.component';
 import { ModalInfoFornecedorComponent } from './pages/fornecedores/modal-info-fornecedor/modal-info-fornecedor.component';
+import { ModalFormFornecedorComponent } from './pages/fornecedores/modal-form-fornecedor/modal-form-fornecedor.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { ModalInfoFornecedorComponent } from './pages/fornecedores/modal-info-fo
     ModalInfoCompraComponent,
     FornecedoresComponent,
     ModalInfoFornecedorComponent,
+    ModalFormFornecedorComponent
   ],
   imports: [
     AppRoutingModule,

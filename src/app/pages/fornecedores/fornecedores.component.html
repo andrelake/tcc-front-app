@@ -1,6 +1,10 @@
 <h1 class="mt-3">Fornecedores</h1>
 
 <div class="container">
+  <section style="text-align: end">
+    <button mat-raised-button color="primary" (click)="openDialog()">Adicionar</button>
+  </section>
+
   <mat-form-field appearance="standard">
     <mat-label>Filter</mat-label>
     <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Bic" #input>

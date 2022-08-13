@@ -6,6 +6,7 @@ import { FornecedoresService } from './fornecedores.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalInfoFornecedorComponent } from './modal-info-fornecedor/modal-info-fornecedor.component';
 import { FornecedorDTO } from 'src/app/models/dto/fornecedorDTO';
+import { ModalFormFornecedorComponent } from './modal-form-fornecedor/modal-form-fornecedor.component';
 
 @Component({
   selector: 'app-fornecedores',
@@ -40,9 +41,11 @@ export class FornecedoresComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  getTodosFornecedores() {
-    this.dataSource = new MatTableDataSource<FornecedorDTO>(this.listaDeFornecedores);
-    this.dataSource.paginator = this.paginator;
+  openDialog() {
+    this.dialog.open(ModalFormFornecedorComponent, {
+      width: '30%',
+      height: '35%'
+    }).afterClosed().subscribe(() => this.ngOnInit());
   }
 
   detalhesFornecedor(element: Fornecedor) {
@@ -50,6 +53,11 @@ export class FornecedoresComponent implements OnInit {
       width: '40%',
       data: element
     })
+  }
+
+  getTodosFornecedores() {
+    this.dataSource = new MatTableDataSource<FornecedorDTO>(this.listaDeFornecedores);
+    this.dataSource.paginator = this.paginator;
   }
 
   deletarFornecedor(element: Fornecedor) {

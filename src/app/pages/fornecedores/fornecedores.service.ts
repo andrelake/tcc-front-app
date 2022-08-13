@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { FornecedorDTO } from 'src/app/models/dto/fornecedorDTO';
 import { FornecedorFormDTO } from 'src/app/models/dto/fornecedorFormDTO';
 import { Fornecedor } from 'src/app/models/fornecedor';
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'

@@ -1,3 +1,4 @@
+import { UsuariosComponent } from './pages/usuarios/usuarios.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -22,6 +23,9 @@ const routes: Routes = [
   },
   {
     path: 'fornecedores', component: FornecedoresComponent
+  },
+  {
+    path: 'usuarios', component: UsuariosComponent
   },
 ];
 

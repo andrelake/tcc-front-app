@@ -1,0 +1,39 @@
+<h1 mat-dialog-title>Formulário de produtos</h1>
+
+<div mat-dialog-content>
+  <form [formGroup]="_usuarioForm">
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Nome</mat-label>
+      <input formControlName="nomeCompleto" matInput placeholder="Nome">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Username</mat-label>
+      <input formControlName="username" matInput placeholder="Username">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Senha</mat-label>
+      <input formControlName="senha" matInput placeholder="Senha">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Admin</mat-label>
+      <input formControlName="isAdmin" matInput placeholder="Admin">
+    </mat-form-field>
+
+  </form>
+</div>
+
+<div mat-dialog-actions [align]="'end'">
+  <button mat-raised-button color="warn" mat-dialog-close="">Fechar</button>
+  <button
+    style="margin-left: 8px;"
+    mat-raised-button color="primary"
+    disabled="{{!_usuarioForm.valid}}"
+    (click)="salvarUsuario()">
+      {{_acaoBtn}}
+  </button>
+</div>
+
+

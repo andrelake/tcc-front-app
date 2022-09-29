@@ -1,44 +1,54 @@
+import { HttpClient } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { UsuarioDTO } from 'src/app/models/dto/usuarioDTO';
+import { UsuarioFormDTO } from 'src/app/models/dto/usuarioFormDTO';
 import { Usuario } from 'src/app/models/usuario';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
-  public _listaDeUsuarios: Usuario[] = [
-  {
-    nome: 'joao@gmail.com',
-    senha: '123456'
-  }
-  ];
+  baseURL: string = environment.baseUrl;
+  public _listaDeUsuarios: Usuario[] = [];
+  public usuarioLogado: UsuarioDTO;
 
-  public usuarioAutenticado: boolean = false;
+  public isUsuarioAutenticado: Boolean = false;
   public usuarioLogado$ = new EventEmitter<boolean>();
 
   constructor(
-    private router: Router
+    private router: Router,
+    private http: HttpClient
   ) { }
 
-  get listaDeUsuarios() {
-    return this._listaDeUsuarios;
+  public buscaListaDeUsuarios(): Observable<Usuario[]> {
+    return this.http.get<Usuario[]>(`${this.baseURL}/usuario/todos`);
   }
 
-  public autenticarUsuario(usuario: Usuario) {
-    this._listaDeUsuarios.forEach((el) => {
-      if(el.nome == usuario.nome && el.senha == usuario.senha) {
-        this.usuarioAutenticado = true;
-        this.usuarioLogado$.emit(true);
-      }
-    });
+  // public  buscaUsuarioLogado(usuario: UsuarioFormDTO): Observable<Usuario> {
+  //   return this.http.post<Usuario>(`${this.baseURL}/usuario/busca`, usuario);
+  // }
+  public autenticaUsuario(usuario: UsuarioFormDTO): Observable<UsuarioDTO> {
+    return this.http.post<UsuarioDTO>(`${this.baseURL}/login/autenticaUsuario`, usuario);
+  }
 
-    if(this.usuarioAutenticado) {
-      console.log('Usuário ' + usuario.nome + ' autenticado com sucesso.')
+  public processaAutenticacaoUsuario(usuarioAutenticado: UsuarioDTO) {
+    if(usuarioAutenticado != null) {
+      this.isUsuarioAutenticado = true;
+      this.usuarioLogado = usuarioAutenticado;
+      this.usuarioLogado$.emit(true);
+    }
+
+    if(this.isUsuarioAutenticado) {
+      console.log('Usuário ' + usuarioAutenticado.username + ' autenticado com sucesso.')
       this.router.navigate(['/home']);
     }
     else {
       console.log('Erro ao autenticar usuário.')
+      alert('Erro ao autenticar usuário.')
       this.usuarioLogado$.emit(false);
     }
   }

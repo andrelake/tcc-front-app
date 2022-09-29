@@ -5,6 +5,9 @@
     </button>
   </div>
   <span>Controle de Estoque</span>
+  <div class="logout" *ngIf="this.usuarioLogado">
+    <a (click)="logout()">Logout</a>
+  </div>
 </mat-toolbar>
 
 <mat-sidenav-container>
@@ -37,6 +40,12 @@
       <button type="button" mat-button routerLink="/fornecedores">
         <mat-icon>work_outline</mat-icon>
         Fornecedores
+      </button>
+    </div>
+    <div>
+      <button type="button" mat-button routerLink="/usuarios" *ngIf="isAdmin">
+        <mat-icon>face</mat-icon>
+        Usuários
       </button>
     </div>
   </mat-sidenav>

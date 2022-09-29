@@ -31,6 +31,8 @@ export class LoginService {
   // public  buscaUsuarioLogado(usuario: UsuarioFormDTO): Observable<Usuario> {
   //   return this.http.post<Usuario>(`${this.baseURL}/usuario/busca`, usuario);
   // }
+
+
   public autenticaUsuario(usuario: UsuarioFormDTO): Observable<UsuarioDTO> {
     return this.http.post<UsuarioDTO>(`${this.baseURL}/login/autenticaUsuario`, usuario);
   }

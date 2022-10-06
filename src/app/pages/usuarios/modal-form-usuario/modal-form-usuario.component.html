@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>Formulário de produtos</h1>
+<h1 mat-dialog-title>Novo usuário</h1>
 
 <div mat-dialog-content>
   <form [formGroup]="_usuarioForm">
@@ -17,10 +17,10 @@
       <input formControlName="senha" matInput placeholder="Senha">
     </mat-form-field>
 
-    <mat-form-field appearance="outline" class="w-100">
-      <mat-label>Admin</mat-label>
-      <input formControlName="isAdmin" matInput placeholder="Admin">
-    </mat-form-field>
+    <div appearance="outline" class="mat-form-field w-100">
+      <mat-label class="pl-2 mr-2"><span>Admin</span></mat-label>
+      <input type="checkbox" formControlName="isAdmin" >
+    </div>
 
   </form>
 </div>

@@ -27,7 +27,7 @@ export class ModalFormUsuarioComponent implements OnInit {
       nomeCompleto: ['', Validators.required],
       username: ['', Validators.required],
       senha: ['', Validators.required],
-      isAdmin: ['', [Validators.required]],
+      isAdmin: [false],
     })
 
     if(this.editData) {

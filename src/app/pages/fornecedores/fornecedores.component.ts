@@ -63,8 +63,4 @@ export class FornecedoresComponent implements OnInit {
   deletarFornecedor(element: Fornecedor) {
     this._fornecedorService.removerFornecedor(element).subscribe(() => this.ngOnInit());
   }
-
-  // atualizarTabela() {
-  //   this.dataSource.data = this.dataSource.data;
-  // }
 }

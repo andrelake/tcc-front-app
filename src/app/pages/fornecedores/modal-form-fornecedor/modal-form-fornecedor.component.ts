@@ -43,15 +43,14 @@ export class ModalFormFornecedorComponent implements OnInit {
   addFornecedor() {
     if(!this.editData) {
       if(this._fornecedorForm.valid) {
-        debugger;
         this.fornecedorService.salvarNovoFornecedor(this._fornecedorForm.value).subscribe(() => {
-          alert('Produto adicionado com sucesso');
+          alert('Fornecedor adicionado com sucesso');
           this._fornecedorForm.reset();
           this.dialogRef.close();
         });
       }
       else {
-        alert('Erro ao adicionar produto');
+        alert('Erro ao adicionar fornecedor');
       }
     }
   }

@@ -27,4 +27,8 @@ export class UsuarioService {
     var novoUsuario = UsuarioInsertDTO.montaUsuarioInsertDTO(usuario);
     return this.http.post<UsuarioInsertDTO>(`${this.baseURL}/usuario`, novoUsuario);
   }
+
+  public deletarUsuario(usuario: Usuario) {
+    return this.http.delete<Usuario>(`${this.baseURL}/usuario/deletar`, {body: usuario});
+  }
 }

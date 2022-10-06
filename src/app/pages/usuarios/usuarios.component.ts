@@ -41,15 +41,11 @@ export class UsuariosComponent implements OnInit {
     this.dialog.open(ModalFormUsuarioComponent, {
       width: '30%',
       height: '50%'
-    }).afterClosed().subscribe(res => this.atualizarTabela());
-  }
-
-  applyFilter($event){
-
+    }).afterClosed().subscribe(() => this.ngOnInit());
   }
 
   deletarUsuario(element) {
-
+    this.usuarioService.deletarUsuario(element).subscribe(() => this.ngOnInit());
   }
 
   atualizarTabela() {

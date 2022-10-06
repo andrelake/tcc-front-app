@@ -1,7 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Usuario } from 'src/app/models/usuario';
+
 import { UsuarioService } from '../usuario-service.service';
 
 @Component({
@@ -22,7 +23,6 @@ export class ModalFormUsuarioComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
     this._usuarioForm = this.formBuilder.group({
       nomeCompleto: ['', Validators.required],
       username: ['', Validators.required],
@@ -52,18 +52,5 @@ export class ModalFormUsuarioComponent implements OnInit {
         alert('Erro ao adicionar usuário');
       }
     }
-    else {
-      // this.updateProduct(this.editData);
-      // alert('Usuário atualizado com sucesso');
-    }
   }
-
-  // updateProduct(editData: Usuario) {
-  //   let indexDoProdutoSelecionado = this.usuarioService._listaDeProdutos.findIndex(produto => produto.id == editData.id);
-  //   let produtoSelecionado = this.usuarioService._listaDeProdutos[indexDoProdutoSelecionado];
-  //   produtoSelecionado.nome = this._usuarioForm.controls['nome'].value;
-  //   produtoSelecionado.categoria = this._usuarioForm.controls['categoria'].value;
-  //   produtoSelecionado.quantidade = this._usuarioForm.controls['quantidade'].value;
-  //   produtoSelecionado.fornecedor = this._usuarioForm.controls['fornecedor'].value;
-  // }
 }

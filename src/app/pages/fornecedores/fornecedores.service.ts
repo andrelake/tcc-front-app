@@ -32,13 +32,7 @@ export class FornecedoresService {
   }
 
   public atualizarFornecedor(object) {
-    var fornecedorForm: FornecedorDTO = {
-      id: object.id,
-      nome: object.nome,
-      categoria: object.categoria
-    }
-
-    return this.http.put<FornecedorDTO>(`${this.baseURL}/fornecedor/atualizar`, fornecedorForm);
+    return this.http.put<FornecedorDTO>(`${this.baseURL}/fornecedor/atualizar`, object);
   }
 
   public removerFornecedor(element: Fornecedor) {

@@ -30,7 +30,7 @@ export class FornecedoresComponent implements OnInit {
   ngOnInit(): void {
     this._fornecedorService.buscaTodosFornecedores().subscribe(
       res => {
-        this.listaDeFornecedores = res
+        this.listaDeFornecedores = res.sort((a,b) => a.nome.toLowerCase() > b.nome.toLowerCase() ? 1 : -1)
         this.getTodosFornecedores()
       }
     );

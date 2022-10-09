@@ -41,13 +41,9 @@ export class ModalInfoFornecedorComponent implements OnInit {
 
   atualizarFornecedor() {
     this.fornecedorService.atualizarFornecedor(this.editData).subscribe(
-      error => {
-        alert('Erro ao adicionar fornecedor');
-      },
       () => {
         alert('Fornecedor atualizado com sucesso');
         this.dialogRef.close();
     });
   }
-
 }

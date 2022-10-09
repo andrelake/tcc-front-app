@@ -48,13 +48,6 @@ export class FornecedoresComponent implements OnInit {
     }).afterClosed().subscribe(() => this.ngOnInit());
   }
 
-  detalhesFornecedor(element: Fornecedor) {
-    this.dialog.open(ModalInfoFornecedorComponent, {
-      width: '40%',
-      data: element
-    })
-  }
-
   getTodosFornecedores() {
     this.dataSource = new MatTableDataSource<FornecedorDTO>(this.listaDeFornecedores);
     this.dataSource.paginator = this.paginator;
@@ -62,5 +55,12 @@ export class FornecedoresComponent implements OnInit {
 
   deletarFornecedor(element: Fornecedor) {
     this._fornecedorService.removerFornecedor(element).subscribe(() => this.ngOnInit());
+  }
+
+  editarFornecedor(element: Fornecedor) {
+    this.dialog.open(ModalInfoFornecedorComponent, {
+      width: '40%',
+      data: element
+    })
   }
 }

@@ -61,6 +61,6 @@ export class FornecedoresComponent implements OnInit {
     this.dialog.open(ModalInfoFornecedorComponent, {
       width: '40%',
       data: element
-    })
+    }).afterClosed().subscribe(() => this.ngOnInit());
   }
 }

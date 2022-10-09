@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Categoria } from 'src/app/models/categoria';
 import { Fornecedor } from 'src/app/models/fornecedor';
 
@@ -19,6 +19,7 @@ export class ModalInfoFornecedorComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
+    private dialogRef: MatDialogRef<ModalInfoFornecedorComponent>,
     private categoriaService: CategoriaService,
     private fornecedorService: FornecedoresService,
     @Inject(MAT_DIALOG_DATA) public editData: Fornecedor
@@ -39,7 +40,14 @@ export class ModalInfoFornecedorComponent implements OnInit {
   }
 
   atualizarFornecedor() {
-    this.fornecedorService.atualizarFornecedor(this.editData).subscribe();
+    this.fornecedorService.atualizarFornecedor(this.editData).subscribe(
+      error => {
+        alert('Erro ao adicionar fornecedor');
+      },
+      () => {
+        alert('Fornecedor atualizado com sucesso');
+        this.dialogRef.close();
+    });
   }
 
 }

@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { faPencil, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { element } from 'protractor';
 import { ProdutoDTO } from 'src/app/models/dto/produtoDTO';
+import { ProdutoFormDTO } from 'src/app/models/dto/produtoFormDTO';
 import { Produto } from 'src/app/models/produto';
 import { ModalFormProdutosComponent } from 'src/app/pages/produtos/modal_form_produtos/modal_form_produtos.component';
 
@@ -64,10 +65,10 @@ export class ProdutosComponent implements OnInit {
     })
   }
 
-  // deleteProduct(element: Produto) {
-  //   this.produtoService.removerProduto(element);
-  //   this.ngOnInit();
-  // }
+  deleteProduct(element: ProdutoFormDTO) {
+    debugger;
+    this.produtoService.removerProduto(element).subscribe(() => this.ngOnInit());
+  }
 
   atualizarTabela() {
     this.dataSource.data = this.dataSource.data;

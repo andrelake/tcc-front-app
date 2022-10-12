@@ -11,7 +11,7 @@ export class AppComponent implements OnInit{
   title = 'tcc-front';
 
   //habilitar quando for codar front.
-  usuarioLogado: boolean = false;
+  usuarioLogado: boolean = true;
   isAdmin: boolean = false;
 
   constructor(

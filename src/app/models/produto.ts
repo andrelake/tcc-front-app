@@ -1,7 +1,12 @@
+import { Categoria } from "./categoria";
+import { Fornecedor } from "./fornecedor";
+
 export class Produto {
   id: number;
   nome: string;
-  categoria: string;
+  descricao: string;
   quantidade: number;
-  fornecedor: string;
+  precoUnitario: number;
+  categoria: Categoria;
+  fornecedor: Fornecedor;
 }

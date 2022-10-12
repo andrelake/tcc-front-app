@@ -23,7 +23,7 @@ export class ModalInfoCompraComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this._listaDeCategorias = this.produtoService._listaDeCategorias;
+    // this._listaDeCategorias = this.produtoService._listaDeCategorias;
 
     this._compraForm = this.formBuilder.group({
       id: [{value: '', disabled: true}, Validators.required],

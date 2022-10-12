@@ -1,55 +1,32 @@
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Categoria } from 'src/app/models/categoria';
+import { ProdutoDTO } from 'src/app/models/dto/produtoDTO';
+import { ProdutoFormDTO } from 'src/app/models/dto/produtoFormDTO';
 import { Produto } from 'src/app/models/produto';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProdutoService {
 
-  _listaDeProdutos: Produto[] = [
-    {
-      id: 1,
-      nome: 'Lápis preto 2B',
-      categoria: 'Material de escritório',
-      quantidade: 150,
-      fornecedor: 'Faber-Castel'
-    },
-    {
-      id: 2,
-      nome: 'Caneta azul',
-      categoria: 'Material de escritório',
-      quantidade: 102,
-      fornecedor: 'Bic'
-    },
-    {
-      id: 3,
-      nome: 'Borracha branca',
-      categoria: 'Material de escritório',
-      quantidade: 80,
-      fornecedor: 'Faber-Castel'
-    },
-  ];
+  baseURL: string = environment.baseUrl;
 
-  _listaDeCategorias: Categoria[] = [
-    {
-      id: 1,
-      nome: 'Material de escritório'
-    }]
+  constructor(
+    private http: HttpClient
+  ) { }
 
-  constructor() { }
-
-  salvarNovoProduto(produto: Produto) {
-    produto.id = this._listaDeProdutos.length + 1;
-    this._listaDeProdutos.push(produto);
+  salvarNovoProduto(produto: ProdutoFormDTO) {
+    return this.http.post<ProdutoFormDTO>(`${this.baseURL}/produto`, produto);
   }
 
-  removerProduto(element: Produto) {
-    let produtoSelecionado = this._listaDeProdutos.find(produto => produto.nome === element.nome && produto.fornecedor === element.fornecedor);
-    this._listaDeProdutos.splice(this._listaDeProdutos.indexOf(produtoSelecionado), 1);
-  }
+  // removerProduto(element: Produto) {
+  //   let produtoSelecionado = this._listaDeProdutos.find(produto => produto.nome === element.nome && produto.fornecedor === element.fornecedor);
+  //   this._listaDeProdutos.splice(this._listaDeProdutos.indexOf(produtoSelecionado), 1);
+  // }
 
-  getTodosOsProdutos() {
-    return this._listaDeProdutos;
+  getTodosOsProdutos(): Observable<ProdutoDTO[]> {
+    return this.http.get<ProdutoDTO[]>(`${this.baseURL}/produto/todos`);
   }
 }

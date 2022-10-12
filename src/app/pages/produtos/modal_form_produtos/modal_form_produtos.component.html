@@ -8,6 +8,21 @@
     </mat-form-field>
 
     <mat-form-field appearance="outline">
+      <mat-label>Descrição</mat-label>
+      <input formControlName="descricao" matInput placeholder="Descrição">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Quantidade</mat-label>
+      <input formControlName="quantidade" matInput placeholder="Quantidade">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Preço Unitário</mat-label>
+      <input formControlName="precoUnitario" matInput placeholder="Preço Unitário">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
       <mat-label>Categoria</mat-label>
       <mat-select formControlName="categoria" placeholder="Categoria">
         <div *ngFor="let categoria of _listaDeCategorias">
@@ -17,14 +32,14 @@
     </mat-form-field>
 
     <mat-form-field appearance="outline">
-      <mat-label>Quantidade</mat-label>
-      <input formControlName="quantidade" matInput placeholder="Quantidade">
+      <mat-label>Fornecedor</mat-label>
+      <mat-select formControlName="fornecedor" placeholder="Fornecedor">
+        <div *ngFor="let fornecedor of _listaDeFornecedores">
+          <mat-option value={{fornecedor.nome}}>{{fornecedor.nome}}</mat-option>
+        </div>
+      </mat-select>
     </mat-form-field>
 
-    <mat-form-field appearance="outline">
-      <mat-label>Fornecedor</mat-label>
-      <input formControlName="fornecedor" matInput placeholder="Fornecedor">
-    </mat-form-field>
   </form>
 </div>
 

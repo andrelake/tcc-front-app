@@ -86,8 +86,12 @@ export class ModalFormProdutosComponent implements OnInit {
       }
     }
     else {
+      console.log('entrou no add() update');
       if(this._produtoForm.valid) {
         this._produtoForm.value['id'] = this._produtoForm.controls['id'].value;
+
+        console.log(this._produtoForm.value);
+
         this.produtoService.atualizarProduto(this._produtoForm.value).subscribe(() => {
           alert('Produto atualizado com sucesso');
           this.dialogRef.close();

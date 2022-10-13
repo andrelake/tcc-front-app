@@ -97,6 +97,9 @@ export class ModalFormProdutosComponent implements OnInit {
           this.dialogRef.close();
         });
       }
+      else {
+        alert('Atualização inválida. Favor preencher o formulário corretamente.')
+      }
     }
   }
 }

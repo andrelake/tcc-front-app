@@ -9,4 +9,5 @@ export class Produto {
   precoUnitario: number;
   categoria: Categoria;
   fornecedor: Fornecedor;
+  ativo: boolean;
 }

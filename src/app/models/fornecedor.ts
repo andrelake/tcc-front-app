@@ -6,4 +6,5 @@ export class Fornecedor {
   nome: string;
   categoria: Categoria;
   listaProdutos: Produto[];
+  ativo: boolean;
 }

@@ -30,8 +30,11 @@ export class FornecedoresComponent implements OnInit {
   ngOnInit(): void {
     this._fornecedorService.buscaTodosFornecedores().subscribe(
       res => {
-        this.listaDeFornecedores = res.sort((a,b) => a.nome.toLowerCase() > b.nome.toLowerCase() ? 1 : -1)
-        this.getTodosFornecedores()
+        this.listaDeFornecedores = res
+          .filter(fornecedor => fornecedor.ativo)
+          .sort((a,b) => a.nome.toLowerCase() > b.nome.toLowerCase() ? 1 : -1)
+
+          this.getTodosFornecedores()
       }
     );
   }
@@ -54,7 +57,14 @@ export class FornecedoresComponent implements OnInit {
   }
 
   deletarFornecedor(element: Fornecedor) {
-    this._fornecedorService.removerFornecedor(element).subscribe(() => this.ngOnInit());
+    this._fornecedorService.buscaFornecedorPorId(element.id).subscribe(fornecedor => {
+      if(fornecedor.temProdutos) {
+        alert("Fornecedor não pode ser deletado, pois possui produtos cadastrados.")
+      }
+      else {
+        this._fornecedorService.removerFornecedor(element).subscribe(() => this.ngOnInit());
+      }
+    })
   }
 
   editarFornecedor(element: Fornecedor) {

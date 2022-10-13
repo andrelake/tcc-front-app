@@ -34,9 +34,9 @@ export class ModalFormProdutosComponent implements OnInit {
 
   ngOnInit(): void {
     this.fornecedorService.buscaTodosFornecedores().subscribe(res => {
-      this._listaDeFornecedores = res;
+      this._listaDeFornecedores = res.filter(res => res.ativo);
 
-      this.categoriaService.buscaTodasCategorias().subscribe(res => this._listaDeCategorias = res);
+      this.categoriaService.buscaTodasCategorias().subscribe(res => this._listaDeCategorias = res.filter(res => res.ativo));
     })
 
     this._produtoForm = this.formBuilder.group({
@@ -49,18 +49,30 @@ export class ModalFormProdutosComponent implements OnInit {
     })
 
     if(this.editData) {
+      this._produtoForm = this.formBuilder.group({
+        id: [{value: '', disabled: true}, Validators.required],
+        nome: ['', Validators.required],
+        descricao: ['', Validators.required],
+        quantidade: ['', [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
+        precoUnitario: ['', [Validators.required, Validators.pattern(this.currency)]],
+        categoria: ['', Validators.required],
+        fornecedor: ['', Validators.required],
+        ativo: ['']
+      })
+
       this._acaoBtn = 'Update';
+      this._produtoForm.controls['id'].setValue(this.editData.id);
       this._produtoForm.controls['nome'].setValue(this.editData.nome);
       this._produtoForm.controls['descricao'].setValue(this.editData.descricao);
       this._produtoForm.controls['quantidade'].setValue(this.editData.quantidade);
       this._produtoForm.controls['precoUnitario'].setValue(this.editData.precoUnitario);
       this._produtoForm.controls['categoria'].setValue(this.editData.categoria);
       this._produtoForm.controls['fornecedor'].setValue(this.editData.fornecedor);
+      this._produtoForm.controls['ativo'].setValue(this.editData.ativo);
     }
   }
 
   addProd() {
-    debugger;
     if(!this.editData) {
       if(this._produtoForm.valid) {
         this.produtoService.salvarNovoProduto(this._produtoForm.value).subscribe(() => {
@@ -74,17 +86,13 @@ export class ModalFormProdutosComponent implements OnInit {
       }
     }
     else {
-      // this.updateProduct(this.editData);
-      alert('Produto atualizado com sucesso');
+      if(this._produtoForm.valid) {
+        this._produtoForm.value['id'] = this._produtoForm.controls['id'].value;
+        this.produtoService.atualizarProduto(this._produtoForm.value).subscribe(() => {
+          alert('Produto atualizado com sucesso');
+          this.dialogRef.close();
+        });
+      }
     }
   }
-
-  // updateProduct(editData: Produto) {
-  //   let indexDoProdutoSelecionado = this.produtoService._listaDeProdutos.findIndex(produto => produto.id == editData.id);
-  //   let produtoSelecionado = this.produtoService._listaDeProdutos[indexDoProdutoSelecionado];
-  //   produtoSelecionado.nome = this._produtoForm.controls['nome'].value;
-  //   produtoSelecionado.categoria = this._produtoForm.controls['categoria'].value;
-  //   produtoSelecionado.quantidade = this._produtoForm.controls['quantidade'].value;
-  //   produtoSelecionado.fornecedor = this._produtoForm.controls['fornecedor'].value;
-  // }
 }

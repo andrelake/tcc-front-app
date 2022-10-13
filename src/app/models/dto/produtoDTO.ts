@@ -6,4 +6,5 @@ export class ProdutoDTO {
   precoUnitario: number;
   categoria: string;
   fornecedor: string;
+  ativo: boolean;
 }

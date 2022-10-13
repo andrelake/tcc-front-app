@@ -36,7 +36,7 @@ export class ProdutosComponent implements OnInit {
 
   ngOnInit() {
     this.produtoService.getTodosOsProdutos().subscribe(res => {
-      this.listaDeProd = res;
+      this.listaDeProd = res.filter(prod => prod.ativo);
       this.getTodosOsProdutos();
     })
   }
@@ -61,12 +61,12 @@ export class ProdutosComponent implements OnInit {
   editProduct(element: Produto) {
     this.dialog.open(ModalFormProdutosComponent, {
       width: '30%',
+      height: '50%',
       data: element
-    })
+    }).afterClosed().subscribe(() => this.ngOnInit());
   }
 
   deleteProduct(element: ProdutoFormDTO) {
-    debugger;
     this.produtoService.removerProduto(element).subscribe(() => this.ngOnInit());
   }
 

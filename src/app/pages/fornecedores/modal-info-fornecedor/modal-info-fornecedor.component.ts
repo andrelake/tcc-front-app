@@ -34,12 +34,14 @@ export class ModalInfoFornecedorComponent implements OnInit {
       id: [{value: '', disabled: true}],
       nome: [{value: ''}, Validators.required],
       categoria: [{value: ''}, Validators.required],
+      ativo: [{value: ''}]
     })
 
     if(this.editData) {
       this.fornecedorForm.controls['id'].setValue(this.editData.id);
       this.fornecedorForm.controls['nome'].setValue(this.editData.nome);
       this.fornecedorForm.controls['categoria'].setValue(this.editData.categoria);
+      this.fornecedorForm.controls['ativo'].setValue(this.editData.ativo);
     }
   }
 
@@ -47,7 +49,8 @@ export class ModalInfoFornecedorComponent implements OnInit {
     var fornecedorForm: FornecedorDTO = {
       id: this.editData.id,
       nome: this.fornecedorForm.value.nome,
-      categoria: this.fornecedorForm.value.categoria
+      categoria: this.fornecedorForm.value.categoria,
+      ativo: this.fornecedorForm.value.ativo
     }
 
     this.fornecedorService.atualizarFornecedor(fornecedorForm).subscribe(

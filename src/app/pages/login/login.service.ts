@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { UsuarioDTO } from 'src/app/models/dto/usuarioDTO';
 import { UsuarioFormDTO } from 'src/app/models/dto/usuarioFormDTO';
 import { Usuario } from 'src/app/models/usuario';
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'

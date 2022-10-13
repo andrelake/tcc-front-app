@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { UsuarioDTO } from 'src/app/models/dto/usuarioDTO';
 import { UsuarioInsertDTO } from 'src/app/models/dto/usuarioInsertDTO';
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environment.prod';
 
 import { Usuario } from './../../models/usuario';
 

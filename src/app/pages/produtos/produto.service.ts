@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ProdutoDTO } from 'src/app/models/dto/produtoDTO';
 import { ProdutoFormDTO } from 'src/app/models/dto/produtoFormDTO';
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
@@ -26,5 +26,9 @@ export class ProdutoService {
 
   getTodosOsProdutos(): Observable<ProdutoDTO[]> {
     return this.http.get<ProdutoDTO[]>(`${this.baseURL}/produto/todos`);
+  }
+
+  atualizarProduto(produto: ProdutoDTO) {
+    return this.http.put<ProdutoDTO>(`${this.baseURL}/produto/atualizar`, produto);
   }
 }

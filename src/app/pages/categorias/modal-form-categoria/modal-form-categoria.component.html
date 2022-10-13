@@ -1,0 +1,29 @@
+<h1 mat-dialog-title>Formulário de categoria</h1>
+
+<div mat-dialog-content>
+  <form [formGroup]="_categoriaForm">
+    <mat-form-field appearance="outline" *ngIf="editData">
+      <mat-label>Código</mat-label>
+      <input formControlName="id" matInput placeholder="Código" disabled>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Nome</mat-label>
+      <input formControlName="nome" matInput placeholder="Nome">
+    </mat-form-field>
+
+  </form>
+</div>
+
+<div mat-dialog-actions [align]="'end'">
+  <button mat-raised-button color="warn" mat-dialog-close="">Fechar</button>
+  <button
+    style="margin-left: 8px;"
+    mat-raised-button color="primary"
+    disabled="{{!_categoriaForm.valid}}"
+    (click)="addCategoria()">
+      {{ _acaoBtn }}
+  </button>
+</div>
+
+

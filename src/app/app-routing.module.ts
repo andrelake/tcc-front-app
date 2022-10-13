@@ -7,6 +7,7 @@ import { FornecedoresComponent } from './pages/fornecedores/fornecedores.compone
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { ProdutosComponent } from './pages/produtos/produtos.component';
+import { CategoriasComponent } from './pages/categorias/categorias.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,9 @@ const routes: Routes = [
   },
   {
     path: 'fornecedores', component: FornecedoresComponent
+  },
+  {
+    path: 'categorias', component: CategoriasComponent
   },
   {
     path: 'usuarios', component: UsuariosComponent

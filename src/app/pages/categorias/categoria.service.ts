@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Categoria } from 'src/app/models/categoria';
 import { CategoriaDTO } from 'src/app/models/dto/categoriaDTO';
+import { CategoriaFormDTO } from 'src/app/models/dto/categoriaFormDTO';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -19,6 +20,14 @@ export class CategoriaService {
 
   public buscaTodasCategorias(): Observable<CategoriaDTO[]> {
     return this.http.get<CategoriaDTO[]>(`${this.baseURL}/categoria/todos`);
+  }
+
+  public salvarNovaCategoria(element: CategoriaFormDTO) {
+    return this.http.post<CategoriaFormDTO>(`${this.baseURL}/categoria`, element);
+  }
+
+  public atualizarCategoria(dto: CategoriaDTO) {
+    return this.http.put<CategoriaDTO>(`${this.baseURL}/categoria/atualizar`, dto);
   }
 
   public removerCategoria(element: Categoria) {

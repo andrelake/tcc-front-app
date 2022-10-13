@@ -30,6 +30,8 @@ import { ModalInfoFornecedorComponent } from './pages/fornecedores/modal-info-fo
 import { ModalFormFornecedorComponent } from './pages/fornecedores/modal-form-fornecedor/modal-form-fornecedor.component';
 import { UsuariosComponent } from './pages/usuarios/usuarios.component';
 import { ModalFormUsuarioComponent } from './pages/usuarios/modal-form-usuario/modal-form-usuario.component';
+import { CategoriasComponent } from './pages/categorias/categorias.component';
+import { ModalFormCategoriaComponent } from './pages/categorias/modal-form-categoria/modal-form-categoria.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,9 @@ import { ModalFormUsuarioComponent } from './pages/usuarios/modal-form-usuario/m
     ModalInfoFornecedorComponent,
     ModalFormFornecedorComponent,
     UsuariosComponent,
-    ModalFormUsuarioComponent
+    ModalFormUsuarioComponent,
+    CategoriasComponent,
+    ModalFormCategoriaComponent
   ],
   imports: [
     AppRoutingModule,

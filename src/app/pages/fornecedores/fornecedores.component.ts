@@ -34,7 +34,7 @@ export class FornecedoresComponent implements OnInit {
           .filter(fornecedor => fornecedor.ativo)
           .sort((a,b) => a.nome.toLowerCase() > b.nome.toLowerCase() ? 1 : -1)
 
-          this.getTodosFornecedores()
+          this.getTodosFornecedores();
       }
     );
   }

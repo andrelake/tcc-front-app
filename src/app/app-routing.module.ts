@@ -1,13 +1,13 @@
-import { UsuariosComponent } from './pages/usuarios/usuarios.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { ComprasComponent } from './pages/compras/compras.component';
+import { CategoriasComponent } from './pages/categorias/categorias.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { FornecedoresComponent } from './pages/fornecedores/fornecedores.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { ProdutosComponent } from './pages/produtos/produtos.component';
-import { CategoriasComponent } from './pages/categorias/categorias.component';
+import { UsuariosComponent } from './pages/usuarios/usuarios.component';
 
 const routes: Routes = [
   {
@@ -20,7 +20,7 @@ const routes: Routes = [
     path: 'produtos', component: ProdutosComponent
   },
   {
-    path: 'compras', component: ComprasComponent
+    path: 'dashboard', component: DashboardComponent
   },
   {
     path: 'fornecedores', component: FornecedoresComponent

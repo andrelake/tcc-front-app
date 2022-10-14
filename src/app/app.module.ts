@@ -18,37 +18,35 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ComprasComponent } from './pages/compras/compras.component';
-import { ModalInfoCompraComponent } from './pages/compras/modal-info-compra/modal-info-compra.component';
+import { CategoriasComponent } from './pages/categorias/categorias.component';
+import { ModalFormCategoriaComponent } from './pages/categorias/modal-form-categoria/modal-form-categoria.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { FornecedoresComponent } from './pages/fornecedores/fornecedores.component';
+import { ModalFormFornecedorComponent } from './pages/fornecedores/modal-form-fornecedor/modal-form-fornecedor.component';
+import { ModalInfoFornecedorComponent } from './pages/fornecedores/modal-info-fornecedor/modal-info-fornecedor.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { LoginService } from './pages/login/login.service';
 import { ModalFormProdutosComponent } from './pages/produtos/modal_form_produtos/modal_form_produtos.component';
 import { ProdutosComponent } from './pages/produtos/produtos.component';
-import { FornecedoresComponent } from './pages/fornecedores/fornecedores.component';
-import { ModalInfoFornecedorComponent } from './pages/fornecedores/modal-info-fornecedor/modal-info-fornecedor.component';
-import { ModalFormFornecedorComponent } from './pages/fornecedores/modal-form-fornecedor/modal-form-fornecedor.component';
-import { UsuariosComponent } from './pages/usuarios/usuarios.component';
 import { ModalFormUsuarioComponent } from './pages/usuarios/modal-form-usuario/modal-form-usuario.component';
-import { CategoriasComponent } from './pages/categorias/categorias.component';
-import { ModalFormCategoriaComponent } from './pages/categorias/modal-form-categoria/modal-form-categoria.component';
+import { UsuariosComponent } from './pages/usuarios/usuarios.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ComprasComponent,
     HomeComponent,
     LoginComponent,
     ProdutosComponent,
     ModalFormProdutosComponent,
-    ModalInfoCompraComponent,
     FornecedoresComponent,
     ModalInfoFornecedorComponent,
     ModalFormFornecedorComponent,
     UsuariosComponent,
     ModalFormUsuarioComponent,
     CategoriasComponent,
-    ModalFormCategoriaComponent
+    ModalFormCategoriaComponent,
+    DashboardComponent
   ],
   imports: [
     AppRoutingModule,

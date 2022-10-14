@@ -47,10 +47,6 @@ export class CategoriasComponent implements OnInit {
     }).afterClosed().subscribe(() => this.ngOnInit());
   }
 
-  applyFilter($event) {
-
-  }
-
   getTodasCategorias() {
     this.dataSource = new MatTableDataSource<CategoriaDTO>(this.listaDeCategorias);
     this.dataSource.paginator = this.paginator;

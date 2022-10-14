@@ -1,1 +1,113 @@
-<p>dashboard works!</p>
+<div class="grid-container">
+  <h1 class="mat-h1">Dashboard</h1>
+
+  <div>
+    <button mat-raised-button class="mb-3" id="botao-gerar" (click)="abrirDashboard()">{{labelBotao}}</button>
+  </div>
+
+  <div id="conteudo" *ngIf="dashGerado">
+    <div class="row">
+      <div class="col">
+        <mat-card>
+          <mat-card-title>
+            <span>Produtos</span>
+          </mat-card-title>
+
+          <mat-card-content>
+            <div class="row">
+              <div class="col card-config">
+                <mat-card class="card-prod">
+                  <mat-card-title class="text-center">
+                    <span>Quantidade</span>
+                  </mat-card-title>
+                  <mat-card-content class="valor">
+                    <div>
+                      <span>{{dashboardInfo.qtdProdutos}}</span>
+                    </div>
+                  </mat-card-content>
+                </mat-card>
+              </div>
+              <div class="col card-config">
+                <mat-card class="card-prod">
+                  <mat-card-title class="text-center">
+                    <span>Valor Total</span>
+                  </mat-card-title>
+                  <mat-card-content class="valor">
+                    <div>
+                      <span>{{dashboardInfo.valorTotalProdutos | currency: 'R$ '}}</span>
+                    </div>
+                  </mat-card-content>
+                </mat-card>
+              </div>
+              <div class="col card-config">
+                <mat-card class="card-prod">
+                  <mat-card-title class="text-center">
+                    <span>Preço médio</span>
+                  </mat-card-title>
+                  <mat-card-content class="valor">
+                    <div>
+                      <span>{{dashboardInfo.precoMedioProdutos | currency: 'R$ '}}</span>
+                    </div>
+                  </mat-card-content>
+                </mat-card>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+
+    <div class="row mt-2">
+      <div class="col">
+        <mat-card>
+          <mat-card-title>
+            <span>Fornecedores</span>
+          </mat-card-title>
+
+          <mat-card-content>
+            <div class="row">
+              <div class="col card-config">
+                <mat-card class="card-prod">
+                  <mat-card-title class="text-center">
+                    <span>Quantidade</span>
+                  </mat-card-title>
+                  <mat-card-content class="valor">
+                    <div>
+                      <span>{{dashboardInfo.qtdFornecedores}}</span>
+                    </div>
+                  </mat-card-content>
+                </mat-card>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <div class="col">
+        <mat-card>
+          <mat-card-title>
+            <span>Categorias</span>
+          </mat-card-title>
+
+          <mat-card-content>
+            <div class="row">
+              <div class="col card-config">
+                <mat-card class="card-prod">
+                  <mat-card-title class="text-center">
+                    <span>Quantidade</span>
+                  </mat-card-title>
+                  <mat-card-content class="valor">
+                    <div>
+                      <span>{{dashboardInfo.qtdCategorias}}</span>
+                    </div>
+                  </mat-card-content>
+                </mat-card>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>
+
+

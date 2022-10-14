@@ -14,6 +14,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserModule } from '@angular/platform-browser';
+import { MatCardModule } from '@angular/material/card';
+import { MatMenuModule } from '@angular/material/menu';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -29,6 +31,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { LoginService } from './pages/login/login.service';
 import { ModalFormProdutosComponent } from './pages/produtos/modal_form_produtos/modal_form_produtos.component';
 import { ProdutosComponent } from './pages/produtos/produtos.component';
+import { MatGridListModule } from '@angular/material/grid-list';
 import { ModalFormUsuarioComponent } from './pages/usuarios/modal-form-usuario/modal-form-usuario.component';
 import { UsuariosComponent } from './pages/usuarios/usuarios.component';
 
@@ -55,11 +58,14 @@ import { UsuariosComponent } from './pages/usuarios/usuarios.component';
     FormsModule,
     HttpClientModule,
     MatButtonModule,
+    MatCardModule,
     MatDatepickerModule,
     MatDialogModule,
     MatFormFieldModule,
+    MatGridListModule,
     MatIconModule,
     MatInputModule,
+    MatMenuModule,
     MatNativeDateModule,
     MatPaginatorModule,
     MatSelectModule,

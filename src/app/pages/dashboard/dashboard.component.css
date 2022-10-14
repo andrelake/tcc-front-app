@@ -1,0 +1,28 @@
+.grid-container {
+  margin: 20px;
+}
+
+.card-config {
+  margin: 20px;
+
+}
+
+.card-prod {
+  height: 200px;
+  background-color: rgb(247, 247, 247);
+}
+
+.valor {
+  display:flex;
+  height:80%;
+  width:100%;
+  justify-content:center;
+  align-items:center;
+
+  font-family: Impact;
+  font-size: 3rem;
+}
+
+#botao-gerar {
+  background-color: rgb(134, 177, 255);
+}

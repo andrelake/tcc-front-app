@@ -1,4 +1,7 @@
+import { DashboardDTO } from './../../models/dto/dashboardDTO';
 import { Component, OnInit } from '@angular/core';
+
+import { DashboardService } from './dashboard.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +10,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  dashboardInfo: DashboardDTO;
+  labelBotao: string = 'Gerar';
+  dashGerado: boolean = false;
+
+  constructor(
+    private dashboardService: DashboardService
+  ) { }
 
   ngOnInit(): void {
+    this.getDashboardInfo();
   }
 
+  getDashboardInfo() {
+    this.dashboardService.buscaDashboardInfo().subscribe(res => this.dashboardInfo = res);
+  }
+
+  abrirDashboard() {
+    this.labelBotao = 'Atualizar';
+    this.dashGerado = true;
+
+    this.getDashboardInfo();
+  }
 }

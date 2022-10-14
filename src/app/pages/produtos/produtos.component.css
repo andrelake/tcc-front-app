@@ -12,3 +12,8 @@ table {
   font-size: 14px;
   width: 100%;
 }
+
+#botoes-modal-confirmacao {
+  text-align: right;
+  padding-top: 60px;
+}

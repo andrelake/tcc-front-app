@@ -1,11 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { faPencil, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { element } from 'protractor';
 import { ProdutoDTO } from 'src/app/models/dto/produtoDTO';
-import { ProdutoFormDTO } from 'src/app/models/dto/produtoFormDTO';
 import { Produto } from 'src/app/models/produto';
 import { ModalFormProdutosComponent } from 'src/app/pages/produtos/modal_form_produtos/modal_form_produtos.component';
 
@@ -19,8 +18,10 @@ import { ProdutoService } from './produto.service';
 export class ProdutosComponent implements OnInit {
 
   dataSource = new MatTableDataSource<ProdutoDTO>([]);
-  displayedColumns: string[] = ['id', 'nome', 'categoria', 'quantidade', 'fornecedor', 'action'];
+  displayedColumns: string[] = ['id', 'nome', 'categoria', 'quantidade', 'precoUnitario', 'fornecedor', 'action'];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+
+  @ViewChild('modalConfirmacao') modalConfirmacao: TemplateRef<any>;
 
   filtro: string = '';
   faTrashIcon = faTrash;
@@ -28,6 +29,7 @@ export class ProdutosComponent implements OnInit {
   faPlusIcon = faPlus;
 
   listaDeProd: ProdutoDTO[] = [];
+  produtoSelecionado: any;
 
   constructor(
     private produtoService: ProdutoService,
@@ -66,11 +68,30 @@ export class ProdutosComponent implements OnInit {
     }).afterClosed().subscribe(() => this.ngOnInit());
   }
 
-  deleteProduct(element: ProdutoFormDTO) {
-    this.produtoService.removerProduto(element).subscribe(() => this.ngOnInit());
+  deleteProduct() {
+    this.produtoService.removerProduto(this.produtoSelecionado).subscribe(() => {
+      this.fecharModal();
+      this.ngOnInit();
+    });
   }
 
   atualizarTabela() {
     this.dataSource.data = this.dataSource.data;
+  }
+
+  abrirModalConfirmacao(entidade: any) {
+    this.produtoSelecionado = entidade;
+
+    console.log(this.produtoSelecionado);
+
+    this.dialog.open(this.modalConfirmacao, {
+      width: '30%',
+      height: '30%',
+      data: entidade
+    }).afterClosed().subscribe(() => this.ngOnInit());
+  }
+
+  fecharModal() {
+    this.dialog.closeAll();
   }
 }
